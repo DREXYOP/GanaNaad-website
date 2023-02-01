@@ -129,3 +129,19 @@
   text-decoration: none;
   color:rgb(0, 0, 0);
 }
+
+.navbrandcss{
+  text-decoration: none;
+}
+
+.navcss{
+  padding: 0px 30px;
+  padding-bottom: 2vh;
+  
+}
+
+/* news */
+.searchcard{
+  display: flex;
+  justify-content: center;
+}

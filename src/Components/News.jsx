@@ -1,9 +1,15 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Searchbox from './searchbox';
 
 function Newscard() {
     return (
+        <>
+        <div className="searchcard">
+        <Searchbox/>
+        </div>
         <div className="newscard">
+           
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="favicon.ico" />
                 <Card.Body>
@@ -23,7 +29,8 @@ function Newscard() {
                 </Card.Body>
             </Card>
         </div>
-    );
+        </>
+        );
 }
 
 export default Newscard;
