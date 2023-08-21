@@ -1,5 +1,4 @@
 
-import Badge from 'react-bootstrap/Badge';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -10,7 +9,7 @@ function NavScrollExample() {
     <div className="navcss">
       <Navbar expand="lg">
         <Container fluid>
-        <Link to="/" className='navbrandcss'><Navbar.Brand>Name<Badge bg="info">beta</Badge></Navbar.Brand></Link>
+        <Link to="/" className='navbrandcss'><Navbar.Brand>GanaNaad</Navbar.Brand></Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
