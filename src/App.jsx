@@ -5,14 +5,13 @@ import {
 import './App.css';
 import About from './Components/About';
 import Contact from './Components/Contact';
-import Navbar from './Components/Navbar';
 import Newscard from './Components/News';
 
 function App() {
   return (
     <>
 
-      <Navbar />
+     
       <Switch>
         <Route path="/contact">
           <Contact />
