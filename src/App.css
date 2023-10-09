@@ -146,3 +146,7 @@
   display: flex;
   justify-content: center;
 }
+
+.latest_div{
+  padding: 0 1rem 0 1rem;
+}

@@ -1,4 +1,5 @@
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Navbarhome from './Navbarhome';
 import { useEffect , useState } from 'react';
@@ -9,16 +10,16 @@ import config from "../config.json"
 
 function Newscard() {
     //eslint-disable-next-line
-    const [data,setData] = useState([])
-    console.log(data)
+    const [latestupload,setLatestupload] = useState([])
+    // console.log(data)
     useEffect(() => {
         const api = Axios.create({
             baseURL: config._baseApiUrl
         })
-        api.get("/v1/news/get")
+        api.get("v1/news/get/latest")
           .then(res => {
             console.log(res)
-            setData(res.data)
+            setLatestupload(res.data)
           })
           .catch(err => {
             console.log(err.message)
@@ -28,7 +29,7 @@ function Newscard() {
         <>
         <Navbarhome/>
        
-        <div className="newscard">
+        {/* <div className="newscard">
            
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="favicon.ico" />
@@ -48,7 +49,19 @@ function Newscard() {
                     <Card.Link href="#">Link</Card.Link>
                 </Card.Body>
             </Card>
-        </div>
+    </div> */}
+    <div className='latest_div'>
+    <Card>
+      <Card.Header as="h5">Uploaded today.</Card.Header>
+      <Card.Body>
+        <Card.Title>Special title treatment</Card.Title>
+        <Card.Text>
+          With supporting text below as a natural lead-in to additional content.
+        </Card.Text>
+        <Button variant="primary">Go somewhere</Button>
+      </Card.Body>
+    </Card>
+    </div>
         </>
         );
 }

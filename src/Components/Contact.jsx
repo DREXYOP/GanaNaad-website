@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 const Contact = () => {
   const [formStatus, setFormStatus] = React.useState('Send')
   const onSubmit = (e) => {
@@ -43,8 +44,9 @@ const Contact = () => {
         </form>
 
         <div><br>
-      </br><p>Or Call Us At 060333 63008</p></div >
+        </br><p>Or Call Us At <b>+0 60333 63008</b></p></div >
       </div >
+      <Footer />
     </>
   )
 }

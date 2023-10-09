@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 class About extends React.Component {
   constructor() {
@@ -17,7 +18,7 @@ class About extends React.Component {
   render() {
     return (
       <>
-      <Navbar/>
+        <Navbar />
         <section id="about" className="about-mf sect-pt4 route">
           <div className="container">
             <div className="row">
@@ -35,6 +36,7 @@ class About extends React.Component {
                             style={{ textAlign: "center" }}
                           >
                             <img
+                              src="/gananaad_logo.jpg"
                               className="img-fluid rounded b-shadow-a"
                               alt=""
                             />
@@ -63,6 +65,7 @@ class About extends React.Component {
             </div>
           </div>
         </section>
+        <Footer />
       </>
     );
   }
