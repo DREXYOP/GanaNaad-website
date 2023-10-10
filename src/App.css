@@ -28,7 +28,7 @@
   color: #61dafb;
 }
 
-/* newscard */
+/* newscard
 
 .newscard{
   padding-left: 1rem;
@@ -42,7 +42,7 @@
   .newscard{
    justify-content: center;
   }
-}
+} */
 
 /* contact */
 
@@ -142,6 +142,12 @@
 }
 
 /* news */
+.news_main_div{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 .searchcard{
   display: flex;
   justify-content: center;
@@ -150,3 +156,18 @@
 .latest_div{
   padding: 0 1rem 0 1rem;
 }
+.all_div{
+  display: flex;
+  padding: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.all_div div{
+  margin: 5px;
+}
+.news_main_div h3{
+  text-align: center;
+}
+
+
+/* Footer */
