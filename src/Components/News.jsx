@@ -2,11 +2,12 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Carousel from 'react-bootstrap/Carousel';
-import Navbarhome from './Navbarhome';
+import Navbar from './Navbar';
 import { useEffect, useState } from 'react';
-import Axios from "axios";
+// import Axios from "axios";
 import config from "../config.json"
 import Footer from "./Footer"
+import api from "../_Api"
 
 
 
@@ -14,16 +15,14 @@ function Newscard() {
   //eslint-disable-next-line
   const [latestupload, setLatestupload] = useState({});
   const [todays, setTodays] = useState([]);
-  const [thisweek, setThisweek] = useState([]);
-  const [all, setAll] = useState([]);
-  const [error, setError] = useState("")
+  const [india, setIndia] = useState([]);
+  const [international, setInternational] = useState([]);
+  const [tripura, setTripura] = useState([]);
+
 
 
   useEffect(() => {
-    const api = Axios.create({
-      baseURL: config._baseApiUrl,
-      headers: { 'Authorization': `Bearer ${config.apikey}` }
-    });
+
     api.get("/v1/news/get/latest")
       .then(res => {
         setLatestupload(res.data);
@@ -40,17 +39,25 @@ function Newscard() {
       .catch(err => {
         console.log(err.message)
       })
-    api.get("/v1/news/get/thisweek")
+    api.get("/v1/news/get/india")
       .then(res => {
-        setThisweek(res.data);
+        setIndia(res.data);
 
       })
       .catch(err => {
         console.log(err.message)
       })
-    api.get("/v1/news/get")
+    api.get("/v1/news/get/international")
       .then(res => {
-        setAll(res.data);
+        setInternational(res.data);
+
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+    api.get("/v1/news/get/tripura")
+      .then(res => {
+        setTripura(res.data);
 
       })
       .catch(err => {
@@ -62,29 +69,9 @@ function Newscard() {
   return (
     <>
       <div className='news_main_div'>
-        <Navbarhome />
+        <Navbar />
 
-        {/* <div className="newscard">
-           
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="favicon.ico" />
-                <Card.Body>
-                    <Card.Title>Title</Card.Title>
-                    <Card.Text>
-                        description
-                    </Card.Text>
-                </Card.Body>
-                <ListGroup className="list-group-flush">
-                    <ListGroup.Item>author</ListGroup.Item>
-                    <ListGroup.Item>date</ListGroup.Item>
-                    <ListGroup.Item>time</ListGroup.Item>
-                </ListGroup>
-                <Card.Body>
-                    <Card.Link href="#">Link</Card.Link>
-                    <Card.Link href="#">Link</Card.Link>
-                </Card.Body>
-            </Card>
-    </div> */}
+        
         <div className='latest_div'>
           <Card>
             <Card.Header as="h5">Latest . . . </Card.Header>
@@ -102,48 +89,89 @@ function Newscard() {
         <h3>Today's Uploads</h3>
         <hr></hr>
         <div className='all_div'>
-            {all.map(n => {
-              return (
-                  <div>
-                    <Card style={{ width: '18rem' }}>
+          {todays.map(n => {
+            return (
+              <div>
+                <Card style={{ width: '18rem' }}>
                   <Card.Header as="h5">Uploaded At - {new Date(n.createdAt).toTimeString()} </Card.Header>
-                      <Card.Img variant="top" src={n.imageUrl} />
-                      <Card.Body>
-                        <Card.Title>{n.title}</Card.Title>
-                        <Card.Text>
-                          {n.description}
-                        </Card.Text>
-                        <Button variant="primary">View article</Button>
-                      </Card.Body>
-                    </Card>
-                    {/* <Card>
-                    <Card.Header as="h5">{new Date(n.createdAt).toLocaleDateString()} </Card.Header>
-                      <Card.Body>
-                     
-                        <Card.Title>{n.title}</Card.Title>
-                        <Card.Text>
-                          {n.description}
-                        </Card.Text>
-                        <Button variant="primary">View article</Button>
-                      </Card.Body>
-                    </Card> */}
-                  </div>
-              )
-            })}
+                  <Card.Img variant="top" src={n.imageUrl} />
+                  <Card.Body>
+                    <Card.Title>{n.title}</Card.Title>
+                    <Card.Text>
+                      {n.description}
+                    </Card.Text>
+                    <Button variant="primary">View article</Button>
+                  </Card.Body>
+                </Card>
+              </div>
+            )
+          })}
         </div>
-
+        
         <br></br>
         <hr></hr>
-        <h3>All Articles</h3>
+        <h3>Tripura News</h3>
         <hr></hr>
         <div className='all_div'>
 
-          {all.map(n => {
+          {tripura.map(n => {
             return (
               <>
                 <div>
                   <Card style={{ width: '18rem' }}>
-                  <Card.Header as="h5">{new Date(n.createdAt).toDateString()} At {new Date(n.createdAt).toTimeString()} </Card.Header>
+                    <Card.Header as="h5">{new Date(n.createdAt).toDateString()} At {new Date(n.createdAt).toTimeString()} </Card.Header>
+                    <Card.Img variant="top" src={n.imageUrl} />
+                    <Card.Body>
+                      <Card.Title>{n.title}</Card.Title>
+                      <Card.Text>
+                        {n.description}
+                      </Card.Text>
+                      <Button variant="primary">View article</Button>
+                    </Card.Body>
+                  </Card>
+                </div>
+              </>
+            )
+          })}
+        </div>
+        <br></br>
+        <hr></hr>
+        <h3>Indian News</h3>
+        <hr></hr>
+        <div className='all_div'>
+
+          {india.map(n => {
+            return (
+              <>
+                <div>
+                  <Card style={{ width: '18rem' }}>
+                    <Card.Header as="h5">{new Date(n.createdAt).toDateString()} At {new Date(n.createdAt).toTimeString()} </Card.Header>
+                    <Card.Img variant="top" src={n.imageUrl} />
+                    <Card.Body>
+                      <Card.Title>{n.title}</Card.Title>
+                      <Card.Text>
+                        {n.description}
+                      </Card.Text>
+                      <Button variant="primary">View article</Button>
+                    </Card.Body>
+                  </Card>
+                </div>
+              </>
+            )
+          })}
+        </div>
+        <br></br>
+        <hr></hr>
+        <h3>International News</h3>
+        <hr></hr>
+        <div className='all_div'>
+
+          {international.map(n => {
+            return (
+              <>
+                <div>
+                  <Card style={{ width: '18rem' }}>
+                    <Card.Header as="h5">{new Date(n.createdAt).toDateString()} At {new Date(n.createdAt).toTimeString()} </Card.Header>
                     <Card.Img variant="top" src={n.imageUrl} />
                     <Card.Body>
                       <Card.Title>{n.title}</Card.Title>
