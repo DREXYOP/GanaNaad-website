@@ -18,7 +18,8 @@ function NavScrollExample() {
               navbarScroll
             >
 
-              <Nav.Link><Link className='linkitems' to="/">News</Link></Nav.Link>
+              <Nav.Link><Link className='linkitems' to="/">Home</Link></Nav.Link>
+              <Nav.Link><Link className='linkitems' to="/news">News</Link></Nav.Link>
               <Nav.Link><Link className='linkitems' to="/about">About</Link></Nav.Link>
               <Nav.Link><Link className='linkitems' to="/contact">Contact</Link></Nav.Link>
 
